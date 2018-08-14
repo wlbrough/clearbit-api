@@ -1,4 +1,4 @@
-# clearbit-api
+# Clearbit PHP API Client
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
@@ -7,23 +7,7 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-**Note:** Replace ```Bill Broughton``` ```wlbrough``` ```https://billbroughton.me``` ```wlbrough@gmail.com``` ```wlbrough``` ```clearbit-api``` ```A complete (unofficial) PHP SDK for Clearbit``` with their correct values in [README.md](README.md), [CHANGELOG.md](CHANGELOG.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE.md](LICENSE.md) and [composer.json](composer.json) files, then delete this line. You can run `$ php prefill.php` in the command line to make all replacements at once. Delete the file prefill.php as well.
-
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
-
-## Structure
-
-If any of the following are applicable to your project, then the directory structure should follow industry best practices by being named the following.
-
-```
-bin/        
-config/
-src/
-tests/
-vendor/
-```
-
+Clearbit API Client. Currently supporting the Enrichment API, but the entire API is on the roadmap for implementation. The current implementation uses v2 endpoints.
 
 ## Install
 
@@ -33,11 +17,60 @@ Via Composer
 $ composer require wlbrough/clearbit-api
 ```
 
-## Usage
+## Quick Start
 
-``` php
-$skeleton = new wlbrough\clearbit-api();
-echo $skeleton->echoPhrase('Hello, League!');
+This implementation supports using one or multiple api keys. If a single key is used, clients are generated using static functions, otherwise instance methods generate clients.
+
+### Using a single key
+
+All of the following examples assume the following step:
+
+```php
+use wlbrough\clearbit\Clearbit;
+
+Clearbit::setKey('token');
+```
+
+#### Configuring endpoint behavior
+
+By default, Clearbit transmits data to a webhook if data is not immediately available. You can configure an endpoint url to receive webhooks, or you can use the steaming API to wait for results.
+
+```php
+$enrichment = Clearbit::createEnrichmentApi();
+
+// Webhook endpoint
+$enrichment->setWebhookEndpoint('https://test.com/api/webhook');
+
+// Streaming
+$enrichment->enableStreaming();
+```
+
+#### Get combined (person and company) data
+
+```php
+$enrichment = Clearbit::createEnrichmentApi();
+$enrichment->combined('test@test.com');
+```
+
+#### Get person data
+
+```php
+$enrichment = Clearbit::createEnrichmentApi();
+$enrichment->person('test@test.com');
+```
+
+To subscribe to updates:
+
+```php
+$enrichment = Clearbit::createEnrichmentApi();
+$enrichment->person('test@test.com', true);
+```
+
+#### Get company data
+
+```php
+$enrichment = Clearbit::createEnrichmentApi();
+$enrichment->company('test.com');
 ```
 
 ## Change log

@@ -10,7 +10,7 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="wlbrough Test Suite">
+        <testsuite name="Clearbit Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
