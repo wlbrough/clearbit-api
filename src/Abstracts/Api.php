@@ -42,8 +42,6 @@ abstract class Api
             $client = new Client(['http_errors' => false]);
         }
 
-        $returnData = null;
-
         $response = $client->get($url);
         $status = $response->getStatusCode();
 
