@@ -73,6 +73,16 @@ $enrichment = Clearbit::createEnrichmentApi();
 $enrichment->company('test.com');
 ```
 
+## Status
+
+- [x] Enrichment
+- [ ] Discovery
+- [ ] Prospector
+- [ ] Risk
+- [ ] Reveal
+- [ ] Name To Domain
+- [ ] Logo
+
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
