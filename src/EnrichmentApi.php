@@ -32,10 +32,22 @@ class EnrichmentApi extends Api
         return $this->call($apiUrl, $this->httpClient);
     }
 
+    public function flagPerson($personId, $corrected = null)
+    {
+        $apiUrl = "https://person.clearbit.com/v1/people/$personId/flag";
+        return $this->post($apiUrl, $corrected, 200, $this->httpClient);
+    }
+
     public function company($domain)
     {
         $apiUrl = $this->composeUrl('company', 'companies', 'domain', $domain);
         return $this->call($apiUrl, $this->httpClient);
+    }
+
+    public function flagCompany($domain, $corrected = null)
+    {
+        $apiUrl = "https://company.clearbit.com/v2/companies/flag?domain=$domain";
+        return $this->post($apiUrl, $corrected, 200, $this->httpClient);
     }
 
     private function composeUrl($subdomain, $path, $query, $parameter)
