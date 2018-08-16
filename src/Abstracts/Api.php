@@ -53,4 +53,18 @@ abstract class Api
 
         return $returnData;
     }
+
+    protected static function post($url, $body, $successCode = 200, $client = null)
+    {
+        if (!$client) {
+            $client = new Client(['http_errors' => false]);
+        }
+
+        $response = $client->post($url, [
+            'form_params' => $body
+        ]);
+        $status = $response->getStatusCode();
+
+        return $status === $successCode;
+    }
 }
