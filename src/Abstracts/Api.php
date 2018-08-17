@@ -9,6 +9,7 @@ abstract class Api
 {
     protected $endpointUrl = null;
     protected $useStreaming = false;
+    protected $httpClient = null;
 
     public function setWebhookEndpoint($endpointUrl = null)
     {
