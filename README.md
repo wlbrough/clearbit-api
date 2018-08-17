@@ -73,6 +73,13 @@ $enrichment = Clearbit::createEnrichmentApi();
 $enrichment->company('test.com');
 ```
 
+#### Name To Domain
+
+```php
+$nameToDomain = Clearbit::createNameToDomain();
+$nameToDomain->get('Segment');
+```
+
 ## Status
 
 - [x] Enrichment
@@ -80,7 +87,7 @@ $enrichment->company('test.com');
 - [ ] Prospector
 - [ ] Risk
 - [ ] Reveal
-- [ ] Name To Domain
+- [x] Name To Domain
 - [ ] Logo
 
 ## Change log

@@ -7,7 +7,6 @@ use wlbrough\clearbit\Abstracts\Api;
 class EnrichmentApi extends Api
 {
     private static $apiUrlTemplate = 'https://pk:@%s%s.clearbit.com/v2/%s/find?%s=%s';
-    private $httpClient = null;
 
     public function __construct($key, $client = null)
     {

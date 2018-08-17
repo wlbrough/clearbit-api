@@ -53,6 +53,16 @@ class Clearbit
         return new EnrichmentApi($this->getKey(), self::$httpClient);
     }
 
+    public static function createNameToDomain()
+    {
+        return new NameToDomainApi(self::$clearbitKey, self::$httpClient);
+    }
+
+    public function nameToDomain()
+    {
+        return new NameToDomainApi($this->getKey(), self::$httpClient);
+    }
+
     private static function validateKey($key)
     {
         if (!is_string($key)) {
