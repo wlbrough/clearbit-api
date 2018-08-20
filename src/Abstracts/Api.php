@@ -49,7 +49,7 @@ abstract class Api
         if ($status === 200) {
             $returnData = json_decode($response->getBody());
         } else {
-            throw new ApiException($status);
+            return new ApiException($status);
         }
 
         return $returnData;
