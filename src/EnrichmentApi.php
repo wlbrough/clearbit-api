@@ -51,7 +51,7 @@ class EnrichmentApi extends Api
 
     private function composeUrl($subdomain, $path, $query, $parameter)
     {
-        $streaming = $this->useStreaming ? '' : '-streaming';
+        $streaming = $this->useStreaming ? '-stream' : '';
         return sprintf(self::$apiUrlTemplate, $subdomain, $streaming, $path, $query, $parameter);
     }
 }
